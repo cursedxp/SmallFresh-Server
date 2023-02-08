@@ -4,16 +4,17 @@ const productSchema = new Schema({
   name: { type: String, required: true },
   img: { type: String },
   category: { type: String, required: true },
-  brand: { type: String, required: true },
+  brand: { type: String },
   description: { type: String },
+  bio: { type: Boolean, default: false },
   stock: {
-    piece: { type: Number },
+    piece: { type: Number, required: true },
     amount: { type: Number },
     unit: {
       enum: ["gram", "kilogram", "piece"],
       default: "gram",
     },
-    price: { type: Number },
+    price: { type: Number, required: true },
   },
 });
 
