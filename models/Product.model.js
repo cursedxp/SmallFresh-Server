@@ -11,8 +11,9 @@ const productSchema = new Schema({
     piece: { type: Number, required: true },
     amount: { type: Number },
     unit: {
+      type: String,
       enum: ["gram", "kilogram", "piece"],
-      default: ["gram"],
+      default: "gram",
     },
     price: { type: Number, required: true },
   },
