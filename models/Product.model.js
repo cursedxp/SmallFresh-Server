@@ -12,7 +12,7 @@ const productSchema = new Schema({
     amount: { type: Number },
     unit: {
       enum: ["gram", "kilogram", "piece"],
-      default: "gram",
+      default: ["gram"],
     },
     price: { type: Number, required: true },
   },
