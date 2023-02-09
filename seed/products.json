@@ -1,0 +1,170 @@
+[
+  {
+    "name": "Apple",
+    "img": "https://example.com/apple.jpg",
+    "category": "Fruit",
+    "brand": "Nature",
+    "description": "A red delicious apple",
+    "bio": true,
+    "stock": {
+      "piece": 10,
+      "amount": 500,
+      "unit": "gram",
+      "price": 2.5
+    }
+  },
+  {
+    "name": "Banana",
+    "img": "https://example.com/banana.jpg",
+    "category": "Fruit",
+    "brand": "Nature",
+    "description": "A yellow sweet banana",
+    "bio": false,
+    "stock": {
+      "piece": 20,
+      "amount": 1000,
+      "unit": "gram",
+      "price": 1.5
+    }
+  },
+  {
+    "name": "Orange",
+    "img": "https://example.com/orange.jpg",
+    "category": "Fruit",
+    "brand": "Nature",
+    "description": "A juicy sweet orange",
+    "bio": true,
+    "stock": {
+      "piece": 15,
+      "amount": 600,
+      "unit": "gram",
+      "price": 2
+    }
+  },
+  {
+    "name": "Strawberry",
+    "img": "https://example.com/strawberry.jpg",
+    "category": "Fruit",
+    "brand": "Nature",
+    "description": "A juicy red strawberry",
+    "bio": true,
+    "stock": {
+      "piece": 25,
+      "amount": 400,
+      "unit": "gram",
+      "price": 3
+    }
+  },
+  {
+    "name": "Peach",
+    "img": "https://example.com/peach.jpg",
+    "category": "Fruit",
+    "brand": "Nature",
+    "description": "A juicy sweet peach",
+    "bio": true,
+    "stock": {
+      "piece": 12,
+      "amount": 450,
+      "unit": "gram",
+      "price": 2.5
+    }
+  },
+  {
+    "name": "Cherry",
+    "img": "https://example.com/cherry.jpg",
+    "category": "Fruit",
+    "brand": "Nature",
+    "description": "A juicy red cherry",
+    "bio": true,
+    "stock": {
+      "piece": 20,
+      "amount": 300,
+      "unit": "gram",
+      "price": 3.5
+    }
+  },
+  {
+    "name": "Carrot",
+    "img": "https://example.com/carrot.jpg",
+    "category": "Vegetable",
+    "brand": "Nature",
+    "description": "A fresh sweet carrot",
+    "bio": true,
+    "stock": {
+      "piece": 30,
+      "amount": 1000,
+      "unit": "gram",
+      "price": 1.5
+    }
+  },
+  {
+    "name": "Cucumber",
+    "img": "https://example.com/cucumber.jpg",
+    "category": "Vegetable",
+    "brand": "Brand 2",
+    "description": "Crunchy and refreshing cucumbers",
+    "bio": false,
+    "stock": {
+      "piece": 150,
+      "amount": 1000,
+      "unit": "gram",
+      "price": 2
+    }
+  },
+  {
+    "name": "Tomato",
+    "img": "https://example.com/tomato.jpg",
+    "category": "Vegetable",
+    "brand": "Brand 4",
+    "description": "Juicy and ripe tomatoes",
+    "bio": false,
+    "stock": {
+      "piece": 200,
+      "amount": 500,
+      "unit": "gram",
+      "price": 2
+    }
+  },
+  {
+    "name": "Lettuce",
+    "img": "https://www.example.com/lettuce.jpg",
+    "category": "Vegetable",
+    "brand": "Green Fields",
+    "description": "Crispy fresh lettuce leaves, perfect for salads",
+    "bio": true,
+    "stock": {
+      "piece": 50,
+      "amount": null,
+      "unit": "piece",
+      "price": 1.2
+    }
+  },
+  {
+    "name": "Peppers",
+    "img": "https://www.example.com/peppers.jpg",
+    "category": "Vegetable",
+    "brand": "Vegi Fresh",
+    "description": "Red and green sweet peppers, delicious in sandwiches",
+    "bio": true,
+    "stock": {
+      "piece": 75,
+      "amount": null,
+      "unit": "piece",
+      "price": 1.5
+    }
+  },
+  {
+    "name": "Zucchini",
+    "img": "https://www.example.com/zucchini.jpg",
+    "category": "Vegetable",
+    "brand": "Fresh Harvest",
+    "description": "Tender zucchini, perfect for grilling or baking",
+    "bio": true,
+    "stock": {
+      "piece": 15,
+      "amount": null,
+      "unit": "kilogram",
+      "price": 5
+    }
+  }
+]
