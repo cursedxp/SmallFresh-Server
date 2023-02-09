@@ -1,7 +1,7 @@
 [
   {
     "name": "Apple",
-    "img": "https://example.com/apple.jpg",
+    "img": "https://img.rewe-static.de/5825563/24568906_digital-image.png",
     "category": "Fruit",
     "brand": "Nature",
     "description": "A red delicious apple",
@@ -15,7 +15,7 @@
   },
   {
     "name": "Banana",
-    "img": "https://example.com/banana.jpg",
+    "img": "https://img.rewe-static.de/1930502/24568902_digital-image.png",
     "category": "Fruit",
     "brand": "Nature",
     "description": "A yellow sweet banana",
@@ -28,39 +28,11 @@
     }
   },
   {
-    "name": "Orange",
-    "img": "https://example.com/orange.jpg",
+    "name": "Mandarin",
+    "img": "https://img.rewe-static.de/1055324/24642201_digital-image.png",
     "category": "Fruit",
     "brand": "Nature",
-    "description": "A juicy sweet orange",
-    "bio": true,
-    "stock": {
-      "piece": 15,
-      "amount": 600,
-      "unit": "gram",
-      "price": 2
-    }
-  },
-  {
-    "name": "Strawberry",
-    "img": "https://example.com/strawberry.jpg",
-    "category": "Fruit",
-    "brand": "Nature",
-    "description": "A juicy red strawberry",
-    "bio": true,
-    "stock": {
-      "piece": 25,
-      "amount": 400,
-      "unit": "gram",
-      "price": 3
-    }
-  },
-  {
-    "name": "Peach",
-    "img": "https://example.com/peach.jpg",
-    "category": "Fruit",
-    "brand": "Nature",
-    "description": "A juicy sweet peach",
+    "description": "A juicy sweet mandarin",
     "bio": true,
     "stock": {
       "piece": 12,
@@ -70,11 +42,11 @@
     }
   },
   {
-    "name": "Cherry",
-    "img": "https://example.com/cherry.jpg",
-    "category": "Fruit",
+    "name": "Cherry Tomato",
+    "img": "https://img.rewe-static.de/2885813/26335968_digital-image.png",
+    "category": "Vegetable",
     "brand": "Nature",
-    "description": "A juicy red cherry",
+    "description": "A juicy red cherry tomato",
     "bio": true,
     "stock": {
       "piece": 20,
@@ -85,7 +57,7 @@
   },
   {
     "name": "Carrot",
-    "img": "https://example.com/carrot.jpg",
+    "img": "https://img.rewe-static.de/1045111/21288882_digital-image.png",
     "category": "Vegetable",
     "brand": "Nature",
     "description": "A fresh sweet carrot",
@@ -99,7 +71,7 @@
   },
   {
     "name": "Cucumber",
-    "img": "https://example.com/cucumber.jpg",
+    "img": "https://img.rewe-static.de/7238557/28430588_digital-image.png",
     "category": "Vegetable",
     "brand": "Brand 2",
     "description": "Crunchy and refreshing cucumbers",
@@ -112,11 +84,11 @@
     }
   },
   {
-    "name": "Tomato",
-    "img": "https://example.com/tomato.jpg",
+    "name": "Broccoli",
+    "img": "https://img.rewe-static.de/2324014/23274786_digital-image.png",
     "category": "Vegetable",
     "brand": "Brand 4",
-    "description": "Juicy and ripe tomatoes",
+    "description": "Juicy and ripe broccoli",
     "bio": false,
     "stock": {
       "piece": 200,
@@ -127,7 +99,7 @@
   },
   {
     "name": "Lettuce",
-    "img": "https://www.example.com/lettuce.jpg",
+    "img": "https://img.rewe-static.de/0482684/11339830_digital-image.png",
     "category": "Vegetable",
     "brand": "Green Fields",
     "description": "Crispy fresh lettuce leaves, perfect for salads",
@@ -140,22 +112,22 @@
     }
   },
   {
-    "name": "Peppers",
-    "img": "https://www.example.com/peppers.jpg",
-    "category": "Vegetable",
-    "brand": "Vegi Fresh",
-    "description": "Red and green sweet peppers, delicious in sandwiches",
+    "name": "Orange",
+    "img": "https://img.rewe-static.de/1057917/23270609_digital-image.png",
+    "category": "Fruit",
+    "brand": "Nature",
+    "description": "A juicy sweet orange",
     "bio": true,
     "stock": {
-      "piece": 75,
-      "amount": null,
-      "unit": "piece",
-      "price": 1.5
+      "piece": 15,
+      "amount": 600,
+      "unit": "gram",
+      "price": 2
     }
   },
   {
     "name": "Zucchini",
-    "img": "https://www.example.com/zucchini.jpg",
+    "img": "https://img.rewe-static.de/2577507/26644840_digital-image.png",
     "category": "Vegetable",
     "brand": "Fresh Harvest",
     "description": "Tender zucchini, perfect for grilling or baking",
@@ -165,6 +137,34 @@
       "amount": null,
       "unit": "kilogram",
       "price": 5
+    }
+  },
+  {
+    "name": "Strawberry",
+    "img": "https://img.rewe-static.de/1098769/21289329_digital-image.png",
+    "category": "Fruit",
+    "brand": "Nature",
+    "description": "A juicy red strawberry",
+    "bio": true,
+    "stock": {
+      "piece": 25,
+      "amount": 400,
+      "unit": "gram",
+      "price": 3
+    }
+  },
+  {
+    "name": "Paprika Peppers",
+    "img": "https://img.rewe-static.de/1040657/21506875_digital-imag.png",
+    "category": "Vegetable",
+    "brand": "Vegi Fresh",
+    "description": "Red and green sweet paprika peppers, delicious in sandwiches",
+    "bio": true,
+    "stock": {
+      "piece": 75,
+      "amount": null,
+      "unit": "piece",
+      "price": 1.5
     }
   }
 ]
