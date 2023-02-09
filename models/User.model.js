@@ -4,11 +4,6 @@ const mongoose = require("mongoose");
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
 const userSchema = new Schema(
   {
-    userType: {
-      type: String,
-      enum: ["user", ",admin"],
-      default: "user",
-    },
     firstName: {
       type: String,
       required: [true, "Name is required."],
