@@ -28,9 +28,8 @@ const addressSchema = new Schema({
     latitude: { type: Number },
     longitude: { type: Number },
   },
-  user: { type: mongoose.Types.ObjectId, ref: "User" },
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 });
 
-const User = model("Address", addressSchema);
-
+const Address = model("Address", addressSchema);
 module.exports = Address;
