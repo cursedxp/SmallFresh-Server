@@ -118,6 +118,35 @@ router.get("/myaddresses", (req, res) => {
     });
 });
 
+//My products
+router.post("/myproducts", (req, res) => {
+  const { userId, productId } = req.body;
+
+  User.findByIdAndUpdate(
+    { _id: userId },
+    { $push: { favProducts: productId } },
+    { new: true }
+  )
+    .then((data) => {
+      return res.json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+router.get("/myproducts", (req, res) => {
+  const { userId } = req.body;
+  User.findById(userId)
+    .populate("favProducts")
+    .then((user) => {
+      return res.json(user);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 router.get("/", (req, res, next) => {
   res.json("All good in here");
 });
