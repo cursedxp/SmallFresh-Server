@@ -6,7 +6,7 @@ const productSeed = require("../seed/products.json");
 const Product = require("../models/Product.model");
 const Address = require("../models/Address.model");
 const User = require("../models/User.model");
-
+const Order = require("../models/Order.Model");
 // router.get("/seed", (req, res) => {
 //   res.json("Hello");
 //   Product.create(productSeed)
@@ -141,6 +141,49 @@ router.get("/myproducts", (req, res) => {
     .populate("favProducts")
     .then((user) => {
       return res.json(user);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+//My Orders
+router.post("/myorders", (req, res) => {
+  const { userId, products, addressId, totalPrice } = req.body;
+
+  Order.create({ userId, products, addressId, totalPrice })
+    .then((order) => {
+      return User.findByIdAndUpdate(
+        { _id: userId },
+        { $push: { orders: order._id } },
+        { new: true }
+      );
+    })
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+router.get("/myorders", (req, res) => {
+  const { userId } = req.body;
+  User.findById(userId)
+    .populate("orders")
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+//Admin orders
+router.get("/admin/myorders", (req, res) => {
+  const { userId } = req.body;
+  Order.find()
+    .then((orders) => {
+      res.json(orders);
     })
     .catch((err) => {
       console.log(err);
