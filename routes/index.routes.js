@@ -68,9 +68,11 @@ router.post("/products", (req, res, next) => {
 
 //Single Product
 router.get("/products/:productId", (req, res, next) => {
-  const { productId } = req.body;
+  const { productId } = req.params;
+
   Product.findById(productId)
     .then((product) => {
+      console.log(product);
       return res.json(product);
     })
     .catch((err) => {
