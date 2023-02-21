@@ -92,6 +92,7 @@ router.post("/myaddresses", (req, res, next) => {
     latitude,
     longitude,
     userId,
+    isDefault,
   } = req.body;
 
   Address.create({
@@ -105,6 +106,7 @@ router.post("/myaddresses", (req, res, next) => {
       latitude,
       longitude,
     },
+    isDefault: isDefault,
   })
     .then((address) => {
       return User.findByIdAndUpdate(
