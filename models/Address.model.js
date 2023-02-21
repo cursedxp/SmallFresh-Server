@@ -29,6 +29,7 @@ const addressSchema = new Schema({
     longitude: { type: Number },
   },
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  isDefault: { type: Boolean, default: false },
 });
 
 const Address = model("Address", addressSchema);
