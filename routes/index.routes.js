@@ -124,7 +124,7 @@ router.post("/myaddresses", (req, res, next) => {
 });
 
 router.get("/myaddresses", (req, res) => {
-  const { userId } = req.params;
+  const { userId } = req.query;
   User.findById(userId)
     .populate("addresses")
     .then((user) => {
