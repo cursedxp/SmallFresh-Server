@@ -183,6 +183,22 @@ router.post("/myorders", (req, res) => {
     });
 });
 
+//update user details
+router.put("/users", (req, res) => {
+  const { userId, firstName, lastName, email } = req.body;
+  User.findByIdAndUpdate(
+    userId,
+    { userId, firstName, lastName, email },
+    { new: true }
+  )
+    .then((updatedUser) => {
+      res.status(200).json(updatedUser);
+    })
+    .catch((error) => {
+      res.status(500).json({ message: "Error updating user", error });
+    });
+});
+
 router.get("/myorders", (req, res) => {
   const { userId } = req.body;
   User.findById(userId)
