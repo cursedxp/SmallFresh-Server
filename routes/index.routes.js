@@ -183,9 +183,37 @@ router.post("/myorders", (req, res) => {
     });
 });
 
-//update user details
-router.put("/users", (req, res) => {
-  const { userId, firstName, lastName, email } = req.body;
+//Users
+router.get("/users", (req, res) => {
+  User.find()
+    .then((users) => {
+      res.status(200).json(users);
+    })
+    .catch((error) => {
+      res.status(500).json({ message: "Error finding user", error });
+    });
+});
+
+//User details
+router.get("/users/:userId", (req, res) => {
+  const { userId } = req.params;
+  User.findById(userId)
+    .then((foundUser) => {
+      if (foundUser) {
+        res.status(200).json(foundUser);
+      } else {
+        res.status(404).json({ message: "User not found" });
+      }
+    })
+    .catch((error) => {
+      res.status(500).json({ message: "Error finding user", error });
+    });
+});
+
+//Update user details
+router.put("/users:userId", (req, res) => {
+  const { userId } = req.params;
+  const { firstName, lastName, email } = req.body;
   User.findByIdAndUpdate(
     userId,
     { userId, firstName, lastName, email },
