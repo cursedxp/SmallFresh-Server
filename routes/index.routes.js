@@ -136,7 +136,7 @@ router.get("/myaddresses", (req, res) => {
 });
 
 //My products
-router.post("/myproducts", (req, res) => {
+router.post("/myproducts/:userId/products/:productId", (req, res) => {
   const { userId, productId } = req.params;
 
   User.findByIdAndUpdate(
