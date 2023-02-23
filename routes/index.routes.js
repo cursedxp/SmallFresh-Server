@@ -203,11 +203,10 @@ router.post("/myorders", (req, res) => {
 //User details
 router.get("/users/:userId", (req, res) => {
   const { userId } = req.params;
-  console.log(req.params);
   User.findById(userId)
     .then((foundUser) => {
       if (foundUser) {
-        const { firstName, lastName, email } = foundUser[0];
+        const { firstName, lastName, email } = foundUser;
         const user = { firstName, lastName, email };
         console.log(user);
         res.status(200).json(user);
