@@ -139,9 +139,9 @@ router.get("/myaddresses", (req, res) => {
 router.post("/myproducts/:userId/products/:productId", (req, res) => {
   const { userId, productId } = req.params;
 
-  return User.findByIdAndUpdate(
+  User.findByIdAndUpdate(
     { _id: userId },
-    { $push: { favProducts: productId } },
+    { $addToSet: { favProducts: productId } },
     { new: true }
   )
     .then((data) => {
