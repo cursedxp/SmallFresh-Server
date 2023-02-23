@@ -185,7 +185,7 @@ router.post("/myorders", (req, res) => {
 
 //User details
 router.get("/users/:userId", (req, res) => {
-  const { userId } = req.params;
+  const { userId } = req.query;
   User.findById(userId)
     .then((foundUser) => {
       if (foundUser) {
