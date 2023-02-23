@@ -155,7 +155,7 @@ router.post("/myproducts/:userId/products/:productId", (req, res) => {
 router.delete("/myproducts/:userId/products/:productId", (req, res) => {
   const { userId, productId } = req.params;
 
-  User.findByIdAndRemove(
+  User.findByIdAndUpdate(
     { _id: userId },
     { $pull: { favProducts: productId } },
     { new: true }
