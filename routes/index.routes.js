@@ -173,7 +173,7 @@ router.get("/myproducts/:userId", (req, res) => {
   User.findById(userId)
     .populate("favProducts")
     .then((user) => {
-      return res.json(user);
+      return res.json(user.favProducts);
     })
     .catch((err) => {
       console.log(err);
