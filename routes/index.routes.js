@@ -137,7 +137,7 @@ router.get("/myaddresses", (req, res) => {
 
 //My products
 router.post("/myproducts", (req, res) => {
-  const { userId, productId } = req.body;
+  const { userId, productId } = req.params;
 
   User.findByIdAndUpdate(
     { _id: userId },
@@ -152,8 +152,24 @@ router.post("/myproducts", (req, res) => {
     });
 });
 
+router.delete("/myproducts", (req, res) => {
+  const { userId, productId } = req.params;
+
+  User.findByIdAndRemove(
+    { _id: userId },
+    { $push: { favProducts: productId } },
+    { new: true }
+  )
+    .then((data) => {
+      return res.json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 router.get("/myproducts", (req, res) => {
-  const { userId } = req.body;
+  const { userId } = req.params;
   User.findById(userId)
     .populate("favProducts")
     .then((user) => {
@@ -163,6 +179,7 @@ router.get("/myproducts", (req, res) => {
       console.log(err);
     });
 });
+
 //My Orders
 router.post("/myorders", (req, res) => {
   const { userId, products, addressId, totalPrice } = req.body;
