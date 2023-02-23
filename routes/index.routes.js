@@ -139,7 +139,7 @@ router.get("/myaddresses", (req, res) => {
 router.post("/myproducts/:userId/products/:productId", (req, res) => {
   const { userId, productId } = req.params;
 
-  User.findByIdAndUpdate(
+  return User.findByIdAndUpdate(
     { _id: userId },
     { $push: { favProducts: productId } },
     { new: true }
@@ -157,7 +157,7 @@ router.delete("/myproducts/:userId/products/:productId", (req, res) => {
 
   User.findByIdAndRemove(
     { _id: userId },
-    { $push: { favProducts: productId } },
+    { $pull: { favProducts: productId } },
     { new: true }
   )
     .then((data) => {
