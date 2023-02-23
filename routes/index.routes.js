@@ -168,7 +168,7 @@ router.delete("/myproducts/:userId/products/:productId", (req, res) => {
     });
 });
 
-router.get("/myproducts", (req, res) => {
+router.get("/myproducts/:userId/", (req, res) => {
   const { userId } = req.params;
   User.findById(userId)
     .populate("favProducts")
