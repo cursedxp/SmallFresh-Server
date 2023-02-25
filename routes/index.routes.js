@@ -93,6 +93,45 @@ router.delete("/products/:productId", (req, res, next) => {
     });
 });
 
+router.put("/products/:productId", (req, res) => {
+  const { productId } = req.params;
+  const {
+    name,
+    img,
+    category,
+    description,
+    bio,
+    piece,
+    unit,
+    brand,
+    amount,
+    price,
+  } = req.body;
+  User.findByIdAndUpdate(
+    productId,
+    {
+      productId,
+      name,
+      img,
+      category,
+      description,
+      bio,
+      piece,
+      unit,
+      brand,
+      amount,
+      price,
+    },
+    { new: true }
+  )
+    .then((updatedProduct) => {
+      res.status(200).json(updatedUser);
+    })
+    .catch((error) => {
+      res.status(500).json({ message: "Error updating user", error });
+    });
+});
+
 //Addresses
 router.post("/myaddresses", (req, res, next) => {
   const {
