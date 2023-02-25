@@ -80,6 +80,19 @@ router.get("/products/:productId", (req, res, next) => {
     });
 });
 
+router.delete("/products/:productId", (req, res, next) => {
+  const { productId } = req.params;
+
+  Product.findByIdAndDelete(productId)
+    .then((product) => {
+      console.log(product);
+      return res.json(product);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 //Addresses
 router.post("/myaddresses", (req, res, next) => {
   const {
