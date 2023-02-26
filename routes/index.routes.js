@@ -110,7 +110,6 @@ router.put("/products/:productId", (req, res) => {
   Product.findByIdAndUpdate(
     productId,
     {
-      productId,
       name,
       img,
       category,
@@ -124,6 +123,7 @@ router.put("/products/:productId", (req, res) => {
     },
     { new: true }
   )
+
     .then((updatedProduct) => {
       res.status(200).json(updatedProduct);
     })
