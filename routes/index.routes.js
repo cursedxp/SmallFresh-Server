@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const productSeed = require("../seed/products.json");
+const { isAuthenticated } = require("../middleware/jwt.middleware.js");
 
 //Models
 const Product = require("../models/Product.model");
@@ -29,7 +30,7 @@ router.get("/products", (req, res, next) => {
     });
 });
 
-router.post("/products", (req, res, next) => {
+router.post("/products", isAuthenticated, (req, res, next) => {
   const {
     name,
     img,
@@ -80,7 +81,7 @@ router.get("/products/:productId", (req, res, next) => {
     });
 });
 
-router.delete("/products/:productId", (req, res, next) => {
+router.delete("/products/:productId", isAuthenticated, (req, res, next) => {
   const { productId } = req.params;
 
   Product.findByIdAndDelete(productId)
@@ -93,7 +94,7 @@ router.delete("/products/:productId", (req, res, next) => {
     });
 });
 
-router.put("/products/:productId", (req, res) => {
+router.put("/products/:productId", isAuthenticated, (req, res) => {
   const { productId } = req.params;
   const {
     name,
@@ -133,7 +134,7 @@ router.put("/products/:productId", (req, res) => {
 });
 
 //Addresses
-router.post("/myaddresses", (req, res, next) => {
+router.post("/myaddresses", isAuthenticated, (req, res, next) => {
   const {
     addressType,
     street,
@@ -188,37 +189,45 @@ router.get("/myaddresses", (req, res) => {
 });
 
 //My products
-router.post("/myproducts/:userId/products/:productId", (req, res) => {
-  const { userId, productId } = req.params;
+router.post(
+  "/myproducts/:userId/products/:productId",
+  isAuthenticated,
+  (req, res) => {
+    const { userId, productId } = req.params;
 
-  User.findByIdAndUpdate(
-    { _id: userId },
-    { $addToSet: { favProducts: productId } },
-    { new: true }
-  )
-    .then((data) => {
-      return res.json(data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+    User.findByIdAndUpdate(
+      { _id: userId },
+      { $addToSet: { favProducts: productId } },
+      { new: true }
+    )
+      .then((data) => {
+        return res.json(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+);
 
-router.delete("/myproducts/:userId/products/:productId", (req, res) => {
-  const { userId, productId } = req.params;
+router.delete(
+  "/myproducts/:userId/products/:productId",
+  isAuthenticated,
+  (req, res) => {
+    const { userId, productId } = req.params;
 
-  User.findByIdAndUpdate(
-    { _id: userId },
-    { $pull: { favProducts: productId } },
-    { new: true }
-  )
-    .then((data) => {
-      return res.json(data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+    User.findByIdAndUpdate(
+      { _id: userId },
+      { $pull: { favProducts: productId } },
+      { new: true }
+    )
+      .then((data) => {
+        return res.json(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+);
 
 router.get("/myproducts/:userId", (req, res) => {
   const { userId } = req.params;
@@ -233,7 +242,7 @@ router.get("/myproducts/:userId", (req, res) => {
 });
 
 //My Orders
-router.post("/myorders", (req, res) => {
+router.post("/myorders", isAuthenticated, (req, res) => {
   const { userId, products, addressId, totalPrice } = req.body;
 
   Order.create({ userId, products, addressId, totalPrice })
@@ -272,7 +281,7 @@ router.get("/users/:userId", (req, res) => {
 });
 
 //Update user details
-router.put("/users/:userId", (req, res) => {
+router.put("/users/:userId", isAuthenticated, (req, res) => {
   const { userId } = req.params;
   const { firstName, lastName, email } = req.body;
   User.findByIdAndUpdate(
@@ -288,7 +297,7 @@ router.put("/users/:userId", (req, res) => {
     });
 });
 
-router.get("/myorders", (req, res) => {
+router.get("/myorders", isAuthenticated, (req, res) => {
   const { userId } = req.body;
   User.findById(userId)
     .populate("orders")
