@@ -107,7 +107,7 @@ router.put("/products/:productId", (req, res) => {
     amount,
     price,
   } = req.body;
-  User.findByIdAndUpdate(
+  Product.findByIdAndUpdate(
     productId,
     {
       productId,
@@ -125,10 +125,10 @@ router.put("/products/:productId", (req, res) => {
     { new: true }
   )
     .then((updatedProduct) => {
-      res.status(200).json(updatedUser);
+      res.status(200).json(updatedProduct);
     })
     .catch((error) => {
-      res.status(500).json({ message: "Error updating user", error });
+      res.status(500).json({ message: "Error updating product", error });
     });
 });
 
