@@ -94,7 +94,7 @@ router.delete("/products/:productId", isAuthenticated, (req, res, next) => {
     });
 });
 
-router.put("/products/:productId", isAuthenticated, (req, res) => {
+router.put("/products/:productId", (req, res) => {
   const { productId } = req.params;
   const {
     name,
