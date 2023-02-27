@@ -132,18 +132,12 @@ router.put("/products/:productId", (req, res) => {
   return Product.findOneAndUpdate(
     { _id: productId },
     {
-      name: name,
-      img: img,
-      category: category,
-      description: description,
-      bio: bio,
-      stock: {
-        piece: piece,
-        amount: amount,
-        unit: unit,
-        price: price,
-      },
-      brand: brand,
+      name,
+      img,
+      category,
+      description,
+      bio,
+      stock,
     },
     { new: true }
   )
