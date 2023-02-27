@@ -96,6 +96,11 @@ router.delete("/products/:productId", isAuthenticated, (req, res, next) => {
 
 router.put("/products/:productId", (req, res) => {
   const { productId } = req.params;
+
+  if (!productId) {
+    return res.status(400).json({ message: "Missing productId parameter" });
+  }
+
   const {
     name,
     img,
@@ -108,27 +113,46 @@ router.put("/products/:productId", (req, res) => {
     amount,
     price,
   } = req.body;
-  Product.findByIdAndUpdate(
-    productId,
+
+  if (
+    !name ||
+    !category ||
+    !description ||
+    !piece ||
+    !amount ||
+    !unit ||
+    !price ||
+    !brand
+  ) {
+    return res
+      .status(400)
+      .json({ message: "Missing required fields in request body" });
+  }
+
+  return Product.findOneAndUpdate(
+    { _id: productId },
     {
-      name,
-      img,
-      category,
-      description,
-      bio,
-      piece,
-      unit,
-      brand,
-      amount,
-      price,
+      name: name,
+      img: img,
+      category: category,
+      description: description,
+      bio: bio,
+      stock: {
+        piece: piece,
+        amount: amount,
+        unit: unit,
+        price: price,
+      },
+      brand: brand,
     },
     { new: true }
   )
-
     .then((updatedProduct) => {
+      console.log("Updated product", updatedProduct);
       res.status(200).json(updatedProduct);
     })
     .catch((error) => {
+      console.log("Error updating product", error);
       res.status(500).json({ message: "Error updating product", error });
     });
 });
