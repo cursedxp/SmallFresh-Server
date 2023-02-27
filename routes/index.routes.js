@@ -101,6 +101,25 @@ router.put("/products/:productId", (req, res) => {
     return res.status(400).json({ message: "Missing productId parameter" });
   }
 
+  const requiredFields = [
+    "name",
+    "category",
+    "description",
+    "piece",
+    "amount",
+    "unit",
+    "brand",
+    "price",
+  ];
+
+  for (const field of requiredFields) {
+    if (!req.body[field]) {
+      return res
+        .status(400)
+        .json({ message: `Missing required field: ${field}` });
+    }
+  }
+
   const {
     name,
     img,
@@ -114,30 +133,21 @@ router.put("/products/:productId", (req, res) => {
     price,
   } = req.body;
 
-  if (
-    !name ||
-    !category ||
-    !description ||
-    !piece ||
-    !amount ||
-    !unit ||
-    !price ||
-    !brand
-  ) {
-    return res
-      .status(400)
-      .json({ message: "Missing required fields in request body" });
-  }
-
-  return Product.findOneAndUpdate(
-    { _id: productId },
+  return Product.findByIdAndUpdate(
+    productId,
     {
-      name,
-      img,
-      category,
-      description,
-      bio,
-      stock,
+      name: name,
+      img: img,
+      category: category,
+      description: description,
+      bio: bio,
+      stock: {
+        piece: piece,
+        amount: amount,
+        unit: unit,
+        price: price,
+      },
+      brand: brand,
     },
     { new: true }
   )
