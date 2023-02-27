@@ -104,8 +104,6 @@ router.put("/products/:productId", (req, res) => {
   const requiredFields = [
     "name",
     "category",
-    "description",
-    "piece",
     "amount",
     "unit",
     "brand",
