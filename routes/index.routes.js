@@ -290,6 +290,7 @@ router.post("/myorders", isAuthenticated, (req, res) => {
 //User details
 router.get("/users/:userId", (req, res) => {
   const { userId } = req.params;
+  console.log(req);
   User.findById(userId)
     .then((foundUser) => {
       if (foundUser) {
@@ -307,16 +308,24 @@ router.get("/users/:userId", (req, res) => {
 });
 
 //Update user details
-router.put("/users/:userId", isAuthenticated, (req, res) => {
+router.put("/users/:userId", (req, res) => {
   const { userId } = req.params;
   const { firstName, lastName, email } = req.body;
+
+  if (!userId) {
+    return res.status(400).json({ message: "Missing userId parameter" });
+  }
+
   User.findByIdAndUpdate(
     userId,
     { userId, firstName, lastName, email },
     { new: true }
   )
     .then((updatedUser) => {
-      res.status(200).json(updatedUser);
+      const { firstName, lastName, email } = updatedUser;
+      const user = { firstName, lastName, email };
+      console.log(user);
+      res.status(200).json(user);
     })
     .catch((error) => {
       res.status(500).json({ message: "Error updating user", error });
