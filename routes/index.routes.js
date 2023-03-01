@@ -9,16 +9,6 @@ const Address = require("../models/Address.model");
 const User = require("../models/User.model");
 const Order = require("../models/Order.Model");
 const { response } = require("express");
-// router.get("/seed", (req, res) => {
-//   res.json("Hello");
-//   Product.create(productSeed)
-//     .then((result) => {
-//       console.log("Collection has been seeded");
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
 
 //Products
 router.get("/products", (req, res, next) => {
@@ -31,7 +21,7 @@ router.get("/products", (req, res, next) => {
     });
 });
 
-router.post("/products", isAuthenticated, (req, res, next) => {
+router.post("/products", (req, res, next) => {
   const {
     name,
     img,
@@ -82,7 +72,7 @@ router.get("/products/:productId", (req, res, next) => {
     });
 });
 
-router.delete("/products/:productId", isAuthenticated, (req, res, next) => {
+router.delete("/products/:productId", (req, res, next) => {
   const { productId } = req.params;
 
   Product.findByIdAndDelete(productId)
@@ -323,7 +313,7 @@ router.get("/myproducts/:userId", (req, res) => {
 });
 
 //My Orders
-router.post("/myorders", isAuthenticated, (req, res) => {
+router.post("/myorders", (req, res) => {
   const { userId, products, addressId, totalPrice } = req.body;
 
   Order.create({ userId, products, addressId, totalPrice })
@@ -387,7 +377,7 @@ router.put("/users/:userId", (req, res) => {
     });
 });
 
-router.get("/myorders", isAuthenticated, (req, res) => {
+router.get("/myorders", (req, res) => {
   const { userId } = req.body;
   User.findById(userId)
     .populate("orders")
