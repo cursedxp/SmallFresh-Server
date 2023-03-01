@@ -203,8 +203,8 @@ router.post("/myaddresses", (req, res, next) => {
     });
 });
 
-router.get("/myaddresses", (req, res) => {
-  const { userId } = req.query;
+router.get("/myaddresses/:userId", (req, res) => {
+  const { userId } = req.params;
   User.findById(userId)
     .populate("addresses")
     .then((user) => {
