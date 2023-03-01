@@ -229,7 +229,7 @@ router.put("/myaddresses/user/:userId/:addressId", async (req, res) => {
   } = req.body;
 
   try {
-    const updatedUser = await User.findOneAndUpdate(
+    const result = await User.updateOne(
       { _id: userId, "addresses._id": addressId },
       {
         $set: {
@@ -245,9 +245,15 @@ router.put("/myaddresses/user/:userId/:addressId", async (req, res) => {
             isDefault,
           },
         },
-      },
-      { new: true }
+      }
     );
+
+    if (result.nModified === 0) {
+      return res.status(404).json({ message: "Address not found for user" });
+    }
+
+    const updatedUser = await User.findById(userId);
+
     res.json(updatedUser);
   } catch (error) {
     console.error(error);
