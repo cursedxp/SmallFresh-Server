@@ -214,6 +214,27 @@ router.get("/myaddresses", (req, res) => {
     });
 });
 
+router.delete("/myaddresses/user/:userId/:addressId", async (req, res) => {
+  try {
+    const { userId, addressId } = req.params;
+
+    const user = await User.findByIdAndUpdate(
+      userId,
+      { $pull: { addresses: { _id: addressId } } },
+      { new: true }
+    );
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({ message: "Address deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+});
+
 //My products
 router.post(
   "/myproducts/:userId/products/:productId",
