@@ -226,8 +226,6 @@ router.delete("/myaddresses/user/:userId/:addressId", (req, res) => {
     ).then((response) => {
       res.json(response.data);
     });
-
-    // res.json({ message: "Address deleted successfully" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
