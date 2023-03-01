@@ -254,7 +254,7 @@ router.put("/myaddresses/user/:userId/:addressId", async (req, res) => {
 
     const updatedUser = await User.findById(userId);
 
-    res.json(updatedUser);
+    res.json(updatedUser.addresses);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
