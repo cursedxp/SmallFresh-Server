@@ -160,7 +160,7 @@ router.put("/products/:productId", (req, res) => {
 });
 
 //Addresses
-router.post("/myaddresses", isAuthenticated, (req, res, next) => {
+router.post("/myaddresses", (req, res, next) => {
   const {
     addressType,
     street,
