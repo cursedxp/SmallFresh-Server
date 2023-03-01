@@ -248,25 +248,21 @@ router.post("/myproducts/:userId/products/:productId", (req, res) => {
     });
 });
 
-router.delete(
-  "/myproducts/:userId/products/:productId",
-  isAuthenticated,
-  (req, res) => {
-    const { userId, productId } = req.params;
+router.delete("/myproducts/:userId/products/:productId", (req, res) => {
+  const { userId, productId } = req.params;
 
-    User.findByIdAndUpdate(
-      { _id: userId },
-      { $pull: { favProducts: productId } },
-      { new: true }
-    )
-      .then((data) => {
-        return res.json(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-);
+  User.findByIdAndUpdate(
+    { _id: userId },
+    { $pull: { favProducts: productId } },
+    { new: true }
+  )
+    .then((data) => {
+      return res.json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 router.get("/myproducts/:userId", (req, res) => {
   const { userId } = req.params;
