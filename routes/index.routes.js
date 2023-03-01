@@ -8,6 +8,7 @@ const Product = require("../models/Product.model");
 const Address = require("../models/Address.model");
 const User = require("../models/User.model");
 const Order = require("../models/Order.Model");
+const { response } = require("express");
 // router.get("/seed", (req, res) => {
 //   res.json("Hello");
 //   Product.create(productSeed)
@@ -214,21 +215,19 @@ router.get("/myaddresses", (req, res) => {
     });
 });
 
-router.delete("/myaddresses/user/:userId/:addressId", async (req, res) => {
+router.delete("/myaddresses/user/:userId/:addressId", (req, res) => {
   try {
     const { userId, addressId } = req.params;
 
-    const user = await User.findByIdAndUpdate(
+    User.findByIdAndUpdate(
       userId,
       { $pull: { addresses: { _id: addressId } } },
       { new: true }
-    );
+    ).then((response) => {
+      res.json(response.data);
+    });
 
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-
-    res.json({ message: "Address deleted successfully" });
+    // res.json({ message: "Address deleted successfully" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
