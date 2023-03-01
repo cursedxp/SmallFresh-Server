@@ -215,6 +215,22 @@ router.get("/myaddresses/user/:userId", (req, res) => {
     });
 });
 
+router.put("/myaddresses/user/:userId/:addressId", async (req, res) => {
+  const { userId, addressId } = req.params;
+  const updatedAddress = req.body;
+  try {
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: userId, "addresses._id": addressId },
+      { $set: { "addresses.$": updatedAddress } },
+      { new: true }
+    );
+    res.json(updatedUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+});
+
 router.delete("/myaddresses/user/:userId/:addressId", async (req, res) => {
   try {
     const { userId, addressId } = req.params;
