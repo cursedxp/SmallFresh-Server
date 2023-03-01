@@ -217,11 +217,35 @@ router.get("/myaddresses/user/:userId", (req, res) => {
 
 router.put("/myaddresses/user/:userId/:addressId", async (req, res) => {
   const { userId, addressId } = req.params;
-  const updatedAddress = req.body;
+  const {
+    addressType,
+    street,
+    city,
+    state,
+    description,
+    longitude,
+    latitude,
+    isDefault,
+  } = req.body;
+
   try {
     const updatedUser = await User.findOneAndUpdate(
       { _id: userId, "addresses._id": addressId },
-      { $set: { "addresses.$": updatedAddress } },
+      {
+        $set: {
+          "addresses.$": {
+            _id: addressId,
+            addressType,
+            street,
+            city,
+            state,
+            description,
+            longitude,
+            latitude,
+            isDefault,
+          },
+        },
+      },
       { new: true }
     );
     res.json(updatedUser);
