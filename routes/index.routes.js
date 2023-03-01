@@ -273,7 +273,7 @@ router.post("/myproducts/:userId/products/:productId", (req, res) => {
 
   User.findByIdAndUpdate(
     { _id: userId },
-    { $addToSet: { favProducts: productId } },
+    { $push: { favProducts: productId } },
     { new: true }
   )
     .then((data) => {
