@@ -215,15 +215,22 @@ router.get("/myaddresses/user/:userId", (req, res) => {
     });
 });
 
-router.put("/myaddresses/user/:userId/:addressId", async (req, res) => {
-  const { userId, addressId } = req.params;
+router.put("/myaddresses/user/:userId/:addressIndex", async (req, res) => {
+  const { userId, addressIndex } = req.params;
   const updatedAddress = req.body;
+
   try {
+    const user = await User.findOne({ _id: userId });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
     const updatedUser = await User.findOneAndUpdate(
-      { _id: userId, "addresses._id": addressId },
-      { $set: { "addresses.$": updatedAddress } },
+      { _id: userId },
+      { $set: { [`addresses.${addressIndex}`]: updatedAddress } },
       { new: true }
     );
+
     res.json(updatedUser);
   } catch (error) {
     console.error(error);
