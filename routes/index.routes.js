@@ -215,17 +215,16 @@ router.get("/myaddresses/user/:userId", (req, res) => {
     });
 });
 
-router.delete("/myaddresses/user/:userId/:addressId", (req, res) => {
+router.delete("/myaddresses/user/:userId/:addressId", async (req, res) => {
   try {
     const { userId, addressId } = req.params;
-
-    User.findByIdAndUpdate(
-      userId,
-      { $pull: { addresses: { _id: addressId } } },
+    console.log(userId, addressId);
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: userId },
+      { $pull: { addresses: addressId } },
       { new: true }
-    ).then((response) => {
-      res.json(response.data);
-    });
+    );
+    res.json(updatedUser);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
