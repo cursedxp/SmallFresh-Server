@@ -10,12 +10,16 @@ To get started with Small Fresh, follow these steps:
 2. Navigate to the project directory: cd smallfresh-client
 3. Install dependencies: npm install
 4. Start the development server: npm start
-5. Open http://localhost:3000 in your web browser.
+5. The server should be listening on http://localhost:5000
+
+## Features
+- A RESTful API for product listings, inventory management, and order processing.
+- Secure user authentication and authorization with JWT token.
+- Scalable infrastructure with a MongoDB database
 
 ## Technologies Used
 
-- React
-- React Router
-- Axios
-- Tailwind Css
-- HeroIcons
+- Node.js
+- Express.js
+- MongoDB
+- JWT (for user authentication)
