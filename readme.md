@@ -6,7 +6,7 @@ Backend is the server-side component of our online store platform designed to he
 
 To get started with Small Fresh, follow these steps:
 
-1. Clone this repository: git clone https://github.com/cursedxp/https://github.com/cursedxp/smallfresh-client.git
+1. Clone this repository: git clone https://github.com/cursedxp/smallfresh-client.git
 2. Navigate to the project directory: cd smallfresh-client
 3. Install dependencies: npm install
 4. Start the development server: npm start
